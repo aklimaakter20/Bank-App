@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="bg-slate-800 w-1/2  rounded-lg mx-auto " id="login-box">
+    <h2 class="text-center text-white mt-20 pt-10 text-2xl font-semibold underline underline-offset-8 mb-12">Login My Bank</h2>
+    <div class="mx-auto w-80">
+        <input id="acc-number" class="px-20 py-2  rounded-sm outline-0 border-0" type="text" placeholder="Your Account Login" ><br><br>
+        <input id="password" class="px-20 py-2  rounded-sm outline-0 border-0" type="password" placeholder="Your Password here">
+    
+        <div class="btn">
+            <button class="bg-white mx-28 h-10  mt-5 px-8 py-2 rounded font-semibold mb-10 " id="login-btn">Login</button>
+        </div>
+    </div>
+</div>
+
+<div class="main-page-balance" id="main-page">
+
+    <!-- Balance Section -->
+
+   <div class="mx-auto w-1/2 mt-16">
+    <h1 class="text-2xl font-semibold text-center bg-[#35bcbf] text-white inline-block px-10 py-3 rounded-md mx-auto ">Your Balance is : <span id="total_balance ">00</span></h1>
+   </div>
+
+   
+    <div class="flex items-center justify-around">
+        <!-- Deposit section -->
+
+
+        <div class="bg-[#64c4ed] w-1/3 px-12 py-6 inline-block rounded-md mt-28 ml-6">
+            <h1 class="text-2xl font-semibold text-white mb-3">Deposit : <span id="total_deposit">00</span> </h1>
+            <input id="deposit_input" class="px-3 py-1 mb-3 outline-0 border-0" type="text" placeholder="Deposit Quantity">
+            <div class="addbtn">
+                <button id="add_depositBtn" class="bg-white text-[#64c4ed] px-3 py-1 font-semibold rounded-md">Add Money</button>
+            </div>
+        </div>
+
+
+        <!-- Withdraw-section -->
+        <div class="bg-[#82acff] w-1/3 px-12 py-6 inline-block rounded-md mt-28 ml-6">
+            <h1 class="text-2xl font-semibold text-white mb-3">Withdraw : 100</h1>
+            <input class="px-3 py-1 mb-3 outline-0 border-0" type="text" placeholder="Withdraw Money">
+            <div class="addbtn">
+                <button class="bg-white text-[#64c4ed] px-3 py-1 font-semibold rounded-md">Withdraw Money</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+<script>
+    const loginBtn = document.getElementById('login-btn')
+    const mainPage = document.getElementById('main-page')
+    mainPage.style.display= 'none'
+
+    loginBtn.addEventListener('click', function(){
+        const logInBox = document.getElementById ('login-box');
+        const accountNo = document.getElementById ('acc-number').value;
+        const password = document.getElementById ('password').value
+
+        if(accountNo == ''){
+            alert(" email address is required");
+        }else if(password == ''){
+            alert("Your password is required")
+        }else{
+            logInBox.style.display = 'none';
+            mainPage.style.display = 'block'
+        }
+    })
+  
+//   add deposit start
+
+    const addDepositBtn = document.getElementById('add_depositBtn')
+    addDepositBtn.addEventListener('click', function(){
+      
+        const depositInput = document.getElementById('deposit_input').value
+        const newDepositInput = parseFloat(depositInput);
+        
+        const totalDeposit = document.getElementById('total_deposit').innerHTML
+        const newTotalDeposit = parseFloat(totalDeposit);
+         
+
+    })
+
+</script>
+</body>
+</html>
