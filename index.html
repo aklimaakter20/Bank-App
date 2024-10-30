@@ -25,7 +25,7 @@
             <!-- Balance Section -->
         
            <div class="mx-auto w-56 lg:w-80 h-16 mt-16 mb-16">
-            <h1 class="text-2xl font-semibold text-center bg-[#35bcbf] text-white inline-block px-10 py-3 rounded-md mx-auto ">Your Balance is : <span id="total_balance">00</span></h1>
+            <h1 class="text-2xl font-semibold text-center bg-[#35bcbf] text-white inline-block px-10 py-3 rounded-md mx-auto ">Your Balance is : $<span id="total_balance">00</span></h1>
            </div>
         
            
@@ -35,7 +35,7 @@
         
                 <div class="bg-[#64c4ed] w-full mb-5 sm:rounded-lg px-6 py-6  rounded-md ml-6">
         
-                    <h1 class="text-2xl font-semibold text-white mb-3">Deposit : <span id="total_deposit">00</span> </h1>
+                    <h1 class="text-2xl font-semibold text-white mb-3">Deposit : $<span id="total_deposit">00</span> </h1>
         
                     <input id="deposit_input" class="py-2 w-56 h-10 ml-2 mb-3  mx-auto rounded-sm outline-0 border-0 px-2" type="number" placeholder="Deposit Quantity">
         
@@ -47,7 +47,7 @@
         
                 <!-- Withdraw-section -->
                 <div class="bg-[#82acff] w-full mb-5 sm:rounded-lg px-6 py-6  rounded-md ml-6">
-                    <h1 class="text-2xl font-semibold text-white mb-3">Withdraw : <span id="withdraw_total">00</span></h1>
+                    <h1 class="text-2xl font-semibold text-white mb-3">Withdraw : $<span id="withdraw_total">00</span></h1>
                     <input id="withdraw_input" class="py-2 w-44 sm:w-56 h-10 ml-2  mb-3 mx-auto rounded-sm outline-0 border-0 px-2" type="text" placeholder="Withdraw Money">
                     <div class="addbtn">
                         <button id="withdrawBtn" class="bg-white text-[#64c4ed] px-3 py-1 font-semibold rounded-md ml-2">Withdraw Money</button>
@@ -119,12 +119,9 @@
         const totalDeposit = document.getElementById('total_deposit').innerHTML;
 
         const totalNewDeposit = parseFloat(totalDeposit);
-        console.log(totalNewDeposit);
         
-
         const total_Deposit_info = depositNewInput + totalNewDeposit;
     
-
         document.getElementById('total_deposit').innerHTML = total_Deposit_info.toFixed(2);
         
         // add deposit end
@@ -169,27 +166,28 @@
     // transaction history
     
     const transactionHistoryBtn = document.getElementById("transactionHistoryBtn")
-    const transactionHistory = document.getElementById("transactionHistory")
-    transactionHistory.style.display = 'none';
+        const transactionHistory = document.getElementById("transactionHistory")
+        transactionHistory.style.display = 'none';
 
-    transactionHistoryBtn.addEventListener('click',function(){
-        transactionHistory.style.display = 'block';
-       
+        transactionHistoryBtn.addEventListener('click', function () {
+            transactionHistory.style.display = 'block';
+            addTransaction()
+        })
+        const transactionTableBody = document.getElementById("transactionTableBody")
+        const addTransaction = () => {
+            const date = new Date()
+            let day = date.getDate()
+            let month = date.getMonth() + 1
+            let year = date.getFullYear()
+            let hour = date.getHours()
+            let mints = date.getMinutes()
 
-    })
-    const transactionTableBody = document.getElementById("transactionTableBody")
-    const addTransaction = (type,amount) => {
-    const date = new Date().toLocaleString();
-    const row = document.createElement('tr');
-    row.innerHTML = `
-    <td class = "py-2">${date}</td>
-    <td class = "py-2">${type}</td>
-    <td class = "py-2">${amount}</td>
-    <td class = "py-2">${balance}</td>
-    `;
-    transactionTableBody.appendChild(row);
-    
-    };
+            
+            const row = document.createElement('tr');
+            row.innerHTML += `<td class = "py-2">${day}-${month}-${year} ${hour}:${mints}</td> <td class = "py-2">$</td>`;
+            transactionTableBody.appendChild(row);
+        };
+
 
 </script>
 </body>
